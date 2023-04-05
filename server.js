@@ -20,7 +20,7 @@ const db = mysql.createConnection(
     console.log('connected to database')
 );
 
-
+//queries
 
 
 
