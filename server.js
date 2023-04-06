@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 //connect to db
-const db = mysql.createConnection(
+const db = mysql.createPool(
     {
         host: "127.0.0.1",//localhost did not work, why?
         user: "root",
