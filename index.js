@@ -24,6 +24,7 @@ function startPortal(){
             switch (answer.employeeManagmemtPortal) {
                 case 'View all Departments':
                     console.log('viewing all departments')
+                    
                     break;
 
                 case 'Add Departments':
