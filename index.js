@@ -1,5 +1,6 @@
 //Inquirer prompts for portal
 import inquirer from 'inquirer';
+import qryTest from './portalQueries.cjs'; 
 
 function startPortal(){
 
@@ -24,7 +25,8 @@ function startPortal(){
             switch (answer.employeeManagmemtPortal) {
                 case 'View all Departments':
                     console.log('viewing all departments')
-                    
+                    const rows = await qryTest();
+                    console.table(rows)
                     break;
 
                 case 'Add Departments':
@@ -62,8 +64,9 @@ function startPortal(){
 
                     break;
             }
+            // add a .then promise to send us back to the main menu to do something else
+        })  
 
-        })
     }
     menu();
 

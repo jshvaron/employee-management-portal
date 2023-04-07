@@ -18,13 +18,16 @@ const db = mysql.createPool(
         database: "departments_db",
     },
     console.log('connected to database')
-);
+).promise()
 
 //queries
-
-
+const qryTest = db.query('SELECT * FROM departments')
+console.log(qryTest)
 
 
 app.listen(PORT, () => {
     console.log(`Server running on port http://localhost:${PORT}`);
   });
+
+
+
