@@ -28,14 +28,16 @@ const addDepartment = async (departmentName) => {
     const [newDpt, fields] = await db.query('INSERT INTO departments (dpt_name) VALUES (?)', [departmentName]);
     return newDpt;
   };
-
 //view all roles qry
 const qryRoles = async () => {
     const [viewRoles, fields] = await db.query('SELECT * FROM roles;' );
     return viewRoles;
     } 
 // add role qry
-
+const addRole = async (departmentName) => {
+    const [newRole, fields] = await db.query('INSERT INTO departments (dpt_name) VALUES (?)', [departmentName]);
+    return newRole;
+  };
 // update emp role qry
 
 // view all emp qry
@@ -51,6 +53,7 @@ module.exports ={
     qryDpts,
     qryRoles,
     qryEmployees,
-    addDepartment
+    addDepartment,
+    addRole
 } 
 

@@ -1,7 +1,7 @@
 //Inquirer prompts for portal
 import inquirer from 'inquirer';
 // imports qrys for switch cases
-import {qryDpts, qryRoles, qryEmployees, addDepartment} from './server.cjs'; 
+import {qryDpts, qryRoles, qryEmployees, addDepartment, addRole} from './server.cjs'; 
 
 
 function startPortal(){
@@ -35,7 +35,8 @@ function startPortal(){
 
                 case 'Add Departments':
                     console.log('Adding a Department')
-                    inquirer.prompt([{
+                    inquirer.prompt([
+                    {
                         name: 'departmentName',
                         type: 'input',
                         message: 'Enter the name of the new department:',
@@ -55,7 +56,27 @@ function startPortal(){
 
                 case 'Add Role':
                     console.log('Adding a Role')
-
+                    inquirer.prompt([
+                    {
+                        name: 'title',
+                        type: 'input',
+                        message: 'Enter the title of the new Role:',                        
+                    },
+                    {
+                        name: 'salary',
+                        type: 'input',
+                        message: 'Enter the salary for this Role:'
+                    },
+                    {
+                        name: 'dptId',
+                        type: 'input',
+                        message: 'Enter the Department Id for this Role:'
+                    }
+                ]).then(async (answer) => {
+                    (console.log(answer))
+                    // import qry
+                    menu();
+                })
                     break;
 
                 case 'Update Employee Role':
