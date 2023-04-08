@@ -1,10 +1,11 @@
 //Inquirer prompts for portal
 import inquirer from 'inquirer';
+// imports qrys for switch cases
 import {qryDpts, qryRoles, qryEmployees} from './server.cjs'; 
 
 
 function startPortal(){
-
+    //  main menu
     function menu(){
         inquirer.prompt([{
 
@@ -23,6 +24,7 @@ function startPortal(){
             ]
     
         }]).then(async(answer)=> {
+            // switches for selecttions
             switch (answer.employeeManagmemtPortal) {
                 case 'View all Departments':
                     console.log('viewing all departments')
@@ -32,6 +34,13 @@ function startPortal(){
 
                 case 'Add Departments':
                     console.log('Adding a Department')
+                    inquirer.prompt([{
+                        name: 'departmentName',
+                        type: 'input',
+                        message: 'Enter the name of the new department:',
+                    }]).then(async (answer) => {
+                        console.log(answer.departmentName)
+                    })
 
                     break;
 
