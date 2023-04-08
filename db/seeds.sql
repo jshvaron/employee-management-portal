@@ -1,9 +1,9 @@
 -- Departments
 INSERT INTO departments (id, dpt_name) VALUES
-(0, 'Sales'),
-(1, 'Marketing'),
-(2, 'Human Resources'),
-(3, 'Finance');
+(1, 'Sales'),
+(2, 'Marketing'),
+(3, 'Human Resources'),
+(4, 'Finance');
 
 -- Roles
 INSERT INTO roles (id, title, salary, department_id) VALUES

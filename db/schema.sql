@@ -4,12 +4,12 @@ CREATE DATABASE superStore_db;
 USE superStore_db;
 
 CREATE TABLE departments (
-    id INT PRIMARY KEY,
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     dpt_name VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE roles (
-    id INT PRIMARY KEY,
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(30) NOT NULL,
     salary DECIMAL NOT NULL,
     department_id INT,
@@ -18,7 +18,7 @@ CREATE TABLE roles (
 );
 
 CREATE TABLE employees (
-    id INT PRIMARY KEY,
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
     role_id INT,

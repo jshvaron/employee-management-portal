@@ -1,7 +1,7 @@
 //Inquirer prompts for portal
 import inquirer from 'inquirer';
 // imports qrys for switch cases
-import {qryDpts, qryRoles, qryEmployees} from './server.cjs'; 
+import {qryDpts, qryRoles, qryEmployees, addDepartment} from './server.cjs'; 
 
 
 function startPortal(){
@@ -30,6 +30,7 @@ function startPortal(){
                     console.log('viewing all departments')
                     const viewDpts = await qryDpts();
                     console.table(viewDpts)
+                    menu();
                     break;
 
                 case 'Add Departments':
@@ -39,15 +40,17 @@ function startPortal(){
                         type: 'input',
                         message: 'Enter the name of the new department:',
                     }]).then(async (answer) => {
-                        console.log(answer.departmentName)
+                        await addDepartment(answer.departmentName)
+                        console.log(`ALERT: ${answer.departmentName} has been added as a new Department!`)
+                        menu();
                     })
-
                     break;
 
                 case 'View all Roles':
                     console.log('viewing all Roles')
                     const viewRoles = await qryRoles();
                     console.table(viewRoles);
+                    menu();
                     break;
 
                 case 'Add Role':
@@ -77,7 +80,7 @@ function startPortal(){
                     break;
             }
             // add a .then promise to send us back to the main menu to do something else
-        })  
+        })
 
     }
     menu();

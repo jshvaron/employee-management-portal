@@ -24,6 +24,10 @@ const qryDpts = async () => {
     return viewDpts;
     } 
 // add dpts qry
+const addDepartment = async (departmentName) => {
+    const [newDpt, fields] = await db.query('INSERT INTO departments (dpt_name) VALUES (?)', [departmentName]);
+    return newDpt;
+  };
 
 //view all roles qry
 const qryRoles = async () => {
@@ -46,5 +50,7 @@ const qryEmployees = async () => {
 module.exports ={
     qryDpts,
     qryRoles,
-    qryEmployees
+    qryEmployees,
+    addDepartment
 } 
+
