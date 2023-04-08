@@ -1,6 +1,6 @@
 //Inquirer prompts for portal
 import inquirer from 'inquirer';
-import qryTest from './portalQueries.cjs'; 
+import qryTest from './server.cjs'; 
 
 function startPortal(){
 
