@@ -1,6 +1,7 @@
 //Inquirer prompts for portal
 import inquirer from 'inquirer';
-import qryTest from './server.cjs'; 
+import {qryDpts, qryRoles, qryEmployees} from './server.cjs'; 
+
 
 function startPortal(){
 
@@ -25,8 +26,8 @@ function startPortal(){
             switch (answer.employeeManagmemtPortal) {
                 case 'View all Departments':
                     console.log('viewing all departments')
-                    const rows = await qryTest();
-                    console.table(rows)
+                    const viewDpts = await qryDpts();
+                    console.table(viewDpts)
                     break;
 
                 case 'Add Departments':
@@ -36,7 +37,8 @@ function startPortal(){
 
                 case 'View all Roles':
                     console.log('viewing all Roles')
-
+                    const viewRoles = await qryRoles();
+                    console.table(viewRoles);
                     break;
 
                 case 'Add Role':
@@ -51,7 +53,8 @@ function startPortal(){
 
                 case 'View all Employees':
                     console.log('Viewing all Employees')
-
+                    const viewEmployees = await qryEmployees();
+                    console.table(viewEmployees);
                     break;
 
                 case 'Add Employee':
