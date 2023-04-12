@@ -15,9 +15,12 @@ const db = mysql.createPool(
 // Express middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-//queries
 
 
+
+
+
+    // QUERIES BEGIN
 // view all dpt qry
 const qryDpts = async () => {
     const [viewDpts, fields] = await db.query('SELECT * FROM departments' );
@@ -34,10 +37,20 @@ const qryRoles = async () => {
     return viewRoles;
     } 
 // add role qry
-const addRole = async (departmentName) => {
-    const [newRole, fields] = await db.query('INSERT INTO departments (dpt_name) VALUES (?)', [departmentName]);
+const addRole = async (title, salary, department_id) => {
+    const [newRole, fields] = await db.query(
+        'INSERT INTO roles (title, salary, department_id) VALUES (?, ?, ?)',
+        [title, salary, department_id]
+    );
     return newRole;
-  };
+};
+// add role needs a dpt to be associated with
+const qrySelectDpt = async () => {
+    const [selectDpt, fields] = await db.query('SELECT * FROM departments');
+    return selectDpt;
+}
+
+
 // update emp role qry
 
 // view all emp qry
@@ -53,7 +66,12 @@ module.exports ={
     qryDpts,
     qryRoles,
     qryEmployees,
+    qrySelectDpt,
     addDepartment,
-    addRole
+    addRole,
+    
 } 
+
+
+
 

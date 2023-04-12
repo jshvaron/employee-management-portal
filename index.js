@@ -1,8 +1,7 @@
 //Inquirer prompts for portal
 import inquirer from 'inquirer';
 // imports qrys for switch cases
-import {qryDpts, qryRoles, qryEmployees, addDepartment, addRole} from './server.cjs'; 
-
+import {qryDpts, qryRoles, qryEmployees, qrySelectDpt, addDepartment, addRole} from './server.cjs'; 
 
 function startPortal(){
     //  main menu
@@ -56,6 +55,14 @@ function startPortal(){
 
                 case 'Add Role':
                     console.log('Adding a Role')
+                    const departments = await qrySelectDpt();
+                    const departmentChoices = departments.map((department) => {
+                        return {
+                            name: department.dpt_name,
+                            value: department.id,
+                        };
+                    });
+                    
                     inquirer.prompt([
                     {
                         name: 'title',
@@ -65,16 +72,19 @@ function startPortal(){
                     {
                         name: 'salary',
                         type: 'input',
-                        message: 'Enter the salary for this Role:'
+                        message: 'Enter the salary for this Role:',
                     },
                     {
-                        name: 'dptId',
-                        type: 'input',
-                        message: 'Enter the Department Id for this Role:'
+                        name: 'department_id',
+                        type: 'list',
+                        message: 'Select the associated Department for this Role:',
+                        choices: departmentChoices,
+                        // choices: How do we display the departments from db as choices here,
                     }
                 ]).then(async (answer) => {
                     (console.log(answer))
-                    // import qry
+                    await addRole(answer.title, answer.salary, answer.department_id);
+                    console.log(`The Role: ${answer.title} has been added.`);
                     menu();
                 })
                     break;
